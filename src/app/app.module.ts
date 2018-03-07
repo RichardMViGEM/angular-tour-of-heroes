@@ -11,10 +11,12 @@ import { HeroService } from './hero.service';
 import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
 
-import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 
 import { AppRoutingModule } from './app-routing.module';
+import { InMemoryDataService } from './in-memory-data.service';
+
 
 @NgModule({
   imports: [
@@ -35,7 +37,8 @@ import { AppRoutingModule } from './app-routing.module';
   // providers array tells Angular to create a single, shared instance of HeroService and inject it into any class that asks for it
   providers: [
     HeroService,
-    MessageService
+    MessageService,
+    InMemoryDataService
   ], bootstrap: [
     AppComponent
   ]
