@@ -4,6 +4,7 @@
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
 
   <ul class="search-result">
+    <!-- ngFor wouldn't be ble to do anything with heroes (array) but heroes$ is an Observable (naming convention), also async pipe is used !-->
     <li *ngFor="let hero of heroes$ | async" >
       <a routerLink="/detail/{{hero.id}}">
         {{hero.name}}
