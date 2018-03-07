@@ -37,7 +37,7 @@ export class HeroService {
   }
   // GET a single hero from the "server"
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;f
+    const url = `${this.heroesUrl}/${id}`;
 
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id =${id}`)),
@@ -57,6 +57,17 @@ export class HeroService {
     return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
       tap(_ => this.log(`updated hero id =${hero.id}`)),
       catchError(this.handleError<any>('updatedHero'))
+    );
+  }
+
+  // DELETE (delete) a hero
+  deleteHero(hero: Hero | number): Observable<Hero> {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const url = `${this.heroesUrl}/${id}`;
+  
+    return this.http.delete<Hero>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Hero>('deleteHero'))
     );
   }
 
