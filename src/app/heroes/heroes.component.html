@@ -1,5 +1,16 @@
 <h2>My Heroes</h2>
 
+<div>
+  <label>
+    Hero name: 
+    <input #heroName />
+  </label>
+  <!-- (click) passes input vlaue to add() and the clearst he input !-->
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
+
 <ul class="heroes">
   <!--for every hero in heroes, list them !-->
   <!-- 'toggle class "selected", depending on whether (the clicked) hero is equal to selectedHero' !-->

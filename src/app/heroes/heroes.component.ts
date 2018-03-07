@@ -13,6 +13,15 @@ export class HeroesComponent implements OnInit {
   // array of Heroes to hold fetched hero data
   heroes: Hero[];
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) {
+      return;
+    }
+    // when addHero() saves successfully, the subscribe callback receives the new hero and pushes it into heroes[]
+    this.heroService.addHero( { name } as Hero).subscribe(hero => {this.heroes.push(hero)});
+  }
+
   // get hero data from heroService
   getHeroes(): void {
     // heroService.getHeroes() returns an Observable array of heroes.
