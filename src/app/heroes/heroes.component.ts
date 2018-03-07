@@ -23,6 +23,7 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(hero: Hero): void {
+    // update the array of heroes; the actual task of removing the db-entry is delegated to HeroService though
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
   }
