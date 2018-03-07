@@ -1,3 +1,5 @@
+<hr />
+
 <!-- ONLY if hero is definded (not null), display the following div element !-->
 <div *ngIf="hero">
   <!-- if 'edit' is true; display edit view; display details-only view otherwise (by default edit is false) !-->
@@ -23,7 +25,6 @@
       <button (click)="save()">Save</button>
   </div>
   <ng-template #viewDetails>
-
     <div class="container">
       <p class="h2">
         Hero details
@@ -32,7 +33,7 @@
         <tbody>
           <tr>
             <td>
-              Name:
+              name:
             </td>
             <td>
               {{hero.name}}
@@ -56,11 +57,10 @@
           </tr>
 
         </tbody>
+      </div>
     </div>
-  </div>
-
-
   </ng-template>
 
   <button (click)="goBack()">Go back</button>
 </div>
+<hr />
