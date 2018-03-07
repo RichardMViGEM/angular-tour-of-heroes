@@ -77,6 +77,9 @@ export class HeroService {
       return of([]);
     }
     return this.http.get<Hero[]>(`api/heroes/?name=${term}`).pipe(
+      // - _ => is shorthand syntax for a nameless, parameter-less throwaway-function that implicitly returns something (this.log() in this case)
+      // - tap is called with every element of the Hero-array returned by http.get(), and this throwaway-function is the callback that's applied
+      // to every element via tap()
       tap(_ => this.log(`found heroes matching "${term}`)),
       catchError(this.handleError<Hero[]>('searchheroes', []))
     );

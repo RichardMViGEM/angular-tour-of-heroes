@@ -16,6 +16,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-ap
 
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryDataService } from './in-memory-data.service';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     DashboardComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    HeroSearchComponent
   ],
   // providers array tells Angular to create a single, shared instance of HeroService and inject it into any class that asks for it
   providers: [
