@@ -1,0 +1,14 @@
+<h2>My Heroes</h2>
+
+<ul class="heroes">
+  <!--for every hero in heroes, list them !-->
+  <!-- 'toggle class "selected", depending on whether (the clicked) hero is equal to selectedHero' !-->
+  <!-- onClick event handler: call function 'onSelect' in heroes.component.ts and pass the clicked !-->
+  <li *ngFor = "let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">
+        {{hero.id}}
+      </span> {{hero.name}}
+      </a>
+    </li>>
+</ul>

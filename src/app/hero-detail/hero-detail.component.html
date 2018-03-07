@@ -1,0 +1,16 @@
+<!-- ONLY if hero is definded (not null), display the following div element !-->
+<div *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+</div>
+
+<div *ngElse>
+  nothing here S;
+</div>
+
+<button (click)="goBack()">go back</button>
