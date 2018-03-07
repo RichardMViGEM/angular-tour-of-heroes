@@ -1,17 +1,66 @@
 <!-- ONLY if hero is definded (not null), display the following div element !-->
 <div *ngIf="hero">
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
+  <!-- if 'edit' is true; display edit view; display details-only view otherwise (by default edit is false) !-->
+  <div *ngIf="edit; else viewDetails">
+
+      <h2>{{ hero.name | uppercase }} Details</h2>
+      <div><span>id: </span>{{hero.id}}</div>
+      <div>
+        <label>name: 
+          <input [(ngModel)]="hero.name" placeholder="name"/>
+        </label>
+      </div>
+      <div>
+        <label>email: 
+            <input [(ngModel)]="hero.email" placeholder="example@example.com"/>
+        </label>
+      </div>
+      <div>
+        <label>freelancer: 
+          <input type="checkbox" name="response" data-ng-model="hero.freelancer" data-ng-value="true" />
+        </label>
+      </div>
+      <button (click)="save()">Save</button>
   </div>
-</div>
+  <ng-template #viewDetails>
 
-<div *ngElse>
-  nothing here S;
-</div>
+    <div class="container">
+      <p class="h2">
+        Hero details
+      </p>
+      <div class="table table-striped">
+        <tbody>
+          <tr>
+            <td>
+              Name:
+            </td>
+            <td>
+              {{hero.name}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              id:
+            </td>
+            <td>
+              {{hero.id}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              email:
+            </td>
+            <td>
+              {{hero.email}}
+            </td>
+          </tr>
 
-<button (click)="save()">Save</button>
-<button (click)="goBack()">Go back</button>
+        </tbody>
+    </div>
+  </div>
+
+
+  </ng-template>
+
+  <button (click)="goBack()">Go back</button>
+</div>

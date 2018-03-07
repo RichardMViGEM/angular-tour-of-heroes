@@ -14,6 +14,7 @@ export class HeroDetailComponent implements OnInit {
 
   // properties
   @Input() hero: Hero;
+  edit: boolean;
 
   // functions
   getHero(): void {
@@ -35,11 +36,11 @@ export class HeroDetailComponent implements OnInit {
     private heroService: HeroService,   // used to get heroes from the "remote server"
     private location: Location          // Angular service for interacting with the browser (navigation back & forth)
   ) {
-
   }
 
   ngOnInit() {
     this.getHero();
+    this.edit = false;
   }
 
 }
