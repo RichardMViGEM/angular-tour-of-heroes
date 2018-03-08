@@ -4,6 +4,9 @@
 <div *ngIf="hero">
   <!-- if 'edit' is true; display edit view; display details-only view otherwise (by default edit is false) !-->
 
+  <!-- ####### -->
+  <!-- CONTENT -->
+
   <!-- EDIT VIEW BEGIN !-->
   <div *ngIf="edit; else viewDetails">
       <h2>{{ hero.name | uppercase }} Details</h2>
@@ -20,12 +23,41 @@
       </div>
       <div>
         <label>freelancer: 
-          <input type="checkbox" name="response" data-ng-model="hero.freelancer" data-ng-value="true" />
+          <input [(ngModel)]="hero.freelancer" type="checkbox"/>
         </label>
       </div>
-      <button (click)="save()" class="btn btn-primary btn-md">
-        Save
-      </button>
+      <div>
+        <label>
+          languages:
+        </label>
+        <span>
+
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let l of hero.languages">
+              counter: {{l}} --- 
+              {{languageToString(l)}}
+              <span>
+                <input [(ngModel)]="hero.languages[l]" type="checkbox">
+              </span>
+            </li>
+          </ul>
+
+        
+          <!--
+          <li class="list-inline-item" *ngFor="let l of hero.languages">
+            <span>
+              A: {{l}}, B: {{languageToString(l)}}
+            </span>
+            <span>
+                <input [(ngModel)]="hero.languages[l]" type="checkbox">    
+            </span>
+
+          </li>
+        !-->
+
+
+        </span>
+      </div>
   </div>
   <!-- EDIT VIEW END !-->
 
@@ -83,7 +115,7 @@
                 <li class="list-inline-item" *ngFor="let l of hero.languages">
                   {{languageToString(l)}}
                 </li>
-                </ul>
+              </ul>
             </td>
           </tr>
 
@@ -93,15 +125,28 @@
   </ng-template>
   <!-- DETAILS VIEW END !-->
 
+  <!-- ####### -->
+  <!-- ACTIONS -->
+
+  <hr />
+
+  <h3>
+    Actions:
+  </h3>
+
   <!-- TOGGLE edit / discard changes buttons !-->
   <div *ngIf="edit; else displayEditButton">
+    <button (click)="save()" class="btn btn-primary btn-md">
+      Save
+    </button>
     <button (click)="setEdit(false)" class="btn btn-default btn-md">
       Discard changes
     </button>
   </div>
   <ng-template #displayEditButton>
     <button (click)="setEdit(true)" class="btn btn-warning btn-md">
-      <span class="glyphicon glyphicon-wrench"></span>
+      Edit
+      <!-- <span class="glyphicon glyphicon-wrench"></span> !-->
     </button>
   </ng-template>
 
