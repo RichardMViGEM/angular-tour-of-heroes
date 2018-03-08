@@ -14,6 +14,7 @@ export class HeroDetailComponent implements OnInit {
 
   // properties
   @Input() hero: Hero;
+  isFreelancer: boolean;
   edit: boolean;
 
   // functions
@@ -28,6 +29,17 @@ export class HeroDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  /**
+   * wrapper function to be called from html template; turns one given language into a string to be inserted into the template
+   * 
+   */
+  languageToString(lang: number): string {
+    // this.hero.printSomething();
+
+    return this.heroService.languageToString(lang);
+    // return lang.toString();
   }
 
   // generated functions

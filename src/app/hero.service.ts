@@ -13,14 +13,28 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+enum Language  {
+  "German"    = 0,
+  "English"   = 1,
+  "French"    = 2,
+  "Spanish"   = 3
+};
+
 @Injectable()
 export class HeroService {
 
-  // properties
-
+  /**
+   * PROPERTIES
+   */
     private heroesUrl = 'api/heroes';
 
-  // functions
+  /**
+   * FUNCTIONS
+   */
+
+  languageToString (lang: number): string {
+    return Language[lang];
+  }
 
   // GET heroes from the "server"
   getHeroes(): Observable<Hero[]> {

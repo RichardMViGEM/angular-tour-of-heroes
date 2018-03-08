@@ -55,6 +55,31 @@
               {{hero.email}}
             </td>
           </tr>
+          <tr>
+            <td>
+              freelancer:
+            </td>
+            <td>
+                <div *ngIf="hero.freelancer; else notFreelancer">
+                    <span class="glyphicon glyphicon-check"></span>
+                </div>
+                <ng-template #notFreelancer>
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                </ng-template>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              languages
+            </td>
+            <td>
+              <ul class="list-inline" *ngIf="hero.languages">
+                <li class="list-inline-item" *ngFor="let l of hero.languages">
+                  {{languageToString(l)}}
+                </li>
+                </ul>
+            </td>
+          </tr>
 
         </tbody>
       </div>
