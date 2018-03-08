@@ -3,8 +3,9 @@
 <!-- ONLY if hero is definded (not null), display the following div element !-->
 <div *ngIf="hero">
   <!-- if 'edit' is true; display edit view; display details-only view otherwise (by default edit is false) !-->
-  <div *ngIf="edit; else viewDetails">
 
+  <!-- EDIT VIEW BEGIN !-->
+  <div *ngIf="edit; else viewDetails">
       <h2>{{ hero.name | uppercase }} Details</h2>
       <div><span>id: </span>{{hero.id}}</div>
       <div>
@@ -22,8 +23,13 @@
           <input type="checkbox" name="response" data-ng-model="hero.freelancer" data-ng-value="true" />
         </label>
       </div>
-      <button (click)="save()">Save</button>
+      <button (click)="save()" class="btn btn-primary btn-md">
+        Save
+      </button>
   </div>
+  <!-- EDIT VIEW END !-->
+
+  <!-- DETAILS VIEW BEGIN !-->
   <ng-template #viewDetails>
     <div class="container">
       <p class="h2">
@@ -85,7 +91,19 @@
       </div>
     </div>
   </ng-template>
+  <!-- DETAILS VIEW END !-->
 
-  <button (click)="goBack()">Go back</button>
+  <!-- TOGGLE edit / discard changes buttons !-->
+  <div *ngIf="edit; else displayEditButton">
+    <button (click)="setEdit(false)" class="btn btn-default btn-md">
+      Discard changes
+    </button>
+  </div>
+  <ng-template #displayEditButton>
+    <button (click)="setEdit(true)" class="btn btn-warning btn-md">
+      <span class="glyphicon glyphicon-wrench"></span>
+    </button>
+  </ng-template>
+
 </div>
 <hr />

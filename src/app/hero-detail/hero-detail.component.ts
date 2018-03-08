@@ -18,6 +18,11 @@ export class HeroDetailComponent implements OnInit {
   edit: boolean;
 
   // functions
+
+  setEdit(newValue: boolean): void {
+    this.edit = newValue;
+  }
+
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
@@ -52,7 +57,7 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getHero();
-    this.edit = false;
+    this.setEdit(false);
   }
 
 }
